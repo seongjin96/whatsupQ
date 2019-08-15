@@ -1,0 +1,38 @@
+put:
+  tags:
+    - 마이페이지
+  summary: 정기 배송 관리 - 요청 사항 변경
+  parameters:
+    - in: header
+      name: token
+      schema:
+        type: string
+      required: true
+  requestBody:
+    require: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            order_id:
+              type: string
+              description: 주문 id
+            delivery_memo:
+              type: string
+              description: 배송 요청사항
+          require:
+            - order_id
+          example: 
+            order_id: '235235523asdf2023059203'
+            delivery_memo: '현관문 앞'
+
+  responses:
+    '200':
+      $ref: '../../../../components/responses.yaml#200-UPDATE_SUCCESS'
+    '400':
+      $ref: '../../../../components/responses.yaml#400-NULL_VALUE'
+    '400 ':
+      $ref: '../../../../components/responses.yaml#400-WRONG_PARAMS'
+    '500 ':
+      $ref: '../../../../components/responses.yaml#500-INTERNAL_SERVER_ERROR'

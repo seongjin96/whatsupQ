@@ -1,0 +1,39 @@
+put:
+  tags:
+    - 마이페이지
+  summary: 정기 배송 관리 - 정기 배송 취소
+  parameters:
+    - in: header
+      name: token
+      schema:
+        type: string
+      required: true
+  requestBody:
+    require: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            order_id:
+              type: string
+              description: 주문 id
+            product_id:
+              type: string
+              description: 상품 id
+          require:
+            - order_id
+            - product_id
+          example:
+            order_id: '2349872349a298342'
+  responses:
+    '200':
+      $ref: '../../../../components/responses.yaml#200-UPDATE_SUCCESS'
+    '400':
+      $ref: '../../../../components/responses.yaml#400-NULL_VALUE'
+    '400 ':
+      $ref: '../../../../components/responses.yaml#400-WRONG_PARAMS'
+    '400  ':
+      $ref: '../../../../components/responses.yaml#400-ALREADY_CANCEL'
+    '500 ':
+      $ref: '../../../../components/responses.yaml#500-INTERNAL_SERVER_ERROR'

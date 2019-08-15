@@ -1,0 +1,43 @@
+put:
+  tags:
+    - 마이페이지
+  summary: 정기 배송 관리 - 배송 주기 변경
+  parameters:
+    - in: header
+      name: token
+      schema:
+        type: string
+      required: true
+  requestBody:
+    require: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            order_id:
+              type: string
+              description: 주문 id
+            product_id:
+              type: string
+              description: 상품 id
+            delivery_cycle:
+              type: integer
+              description: 배송주기
+          require:
+            - order_id
+            - product_id
+            - delivery_cycle
+          example:
+            order_id: '1239851235a1235987235'
+            product_id: '23948a0s9df2009sadfasdf'
+            delivery_cycle: 1
+  responses:
+    '200':
+      $ref: '../../../../components/responses.yaml#200-UPDATE_SUCCESS'
+    '400':
+      $ref: '../../../../components/responses.yaml#400-NULL_VALUE'
+    '400 ':
+      $ref: '../../../../components/responses.yaml#400-WRONG_PARAMS'
+    '500 ':
+      $ref: '../../../../components/responses.yaml#500-INTERNAL_SERVER_ERROR'
