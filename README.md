@@ -1,18 +1,16 @@
-# 준비해박스
-![서비스 워크플로우](./public/images/service_workflow.jpg)
+# whatsupQ
 
 
 ## Description
-* SOPT 24기 앱잼(app-jam)
 
 * 프로젝트 설명 : 자취생을 위한 정기배송 서비스
   * 2030 1인 가구를 위한 생필품 정기배송과 자신만의 자취방을 꾸미고 싶은 이들을 위한 패키지 서비스를 제공하는 큐레이션 기반 E-커머스
 
-* 프로젝트 기간 : 2019년 06월 30일 ~ 2019년 07월 12일
+* 프로젝트 기간 : 2019년 06월 30일 ~ 
 
 * 어플리케이션 구성 : Mobile App(Android, iOS), Server
 
-* **API** : http://13.209.206.99:3000/docs/#/
+* **API** : http://54.180.46.143:3000/docs/
 
 ## 사용한 도구
 - Github
@@ -79,6 +77,4 @@
 
 ## 개발자
 
-*  **박재성** ([jaeseongDev](https://github.com/jaeseongDev))
 *  **고성진** ([seongjin96](https://github.com/seongjin96))
-*  **조연희** ([yeoneei](https://github.com/yeoneei))
