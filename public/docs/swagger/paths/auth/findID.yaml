@@ -1,0 +1,53 @@
+get:
+  tags:
+    - 로그인 및 회원가입
+  summary: 아이디 찾기 
+  requestBody:
+    require: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            birth:
+              type: string
+              description: 생년월일
+            phone:
+              type: string
+              description: 휴대폰 번호
+          require:
+            - birth
+            - phone
+          example:
+            birth: '960225'
+            phone: '01048302250'
+  responses:
+    '200':
+      description: 생년월일과 휴대폰번호가 일치해서 아이디 찾기 성공
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 200
+              success:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: '아이디 찾기 성공'
+              data: 
+                type: object
+                example: {
+                  "email":  "qkrwotjd1445@naver.com"
+                }
+    '400':
+      $ref: '../../components/responses.yaml#400-NULL_VALUE'
+    '400 ':
+      $ref: '../../components/responses.yaml#400-NULL_USER'
+    '400  ':
+      $ref: '../../components/responses.yaml#400-INVALID_PASSWORD'
+    '500  ':
+      $ref: '../../components/responses.yaml#500-INTERNAL_SERVER_ERROR'
