@@ -15,6 +15,9 @@ post:
             password:
               type: string
               description: 사용자 임시비밀번호
+            new_password:
+              type: string
+              description: 사용자 새비밀번호
           require:
             - email
             - password
@@ -22,6 +25,7 @@ post:
           example:
             email: qkrwotjd1445@naver.com
             password: '1234'
+            new_password: 'abcd'
   responses:
     '200':
       description: 로그인 성공 및 성공적으로 비밀번호가 변경되었습니다
