@@ -9,8 +9,8 @@ info:
   
 # API 서버에 대한 정보
 servers:
-  #- url: "http://54.180.46.143:3000/api"
-  - url: "http://localhost:3000/api"
+  - url: "http://54.180.46.143:3000/api"
+  #- url: "http://localhost:3000/api"
     description: 왓섭큐 API # 제공하는 API에 대한 설명
 
 tags:
