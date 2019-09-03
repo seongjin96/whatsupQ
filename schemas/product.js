@@ -48,7 +48,7 @@ const productSchema = new Schema({
     deleted_at: {
         type: Date
     },
-    // '정기 배송' 상품으로 사용자한테 보여줄 건지 여부
+   /* // '정기 배송' 상품으로 사용자한테 보여줄 건지 여부
     is_regular_product: {
         type: Boolean,
         required: true
@@ -57,7 +57,7 @@ const productSchema = new Schema({
     is_package_product: {
         type: Boolean,
         required: true
-    },
+    },*/
     // 분류
     category: {
         type: [String]
