@@ -6,38 +6,38 @@ const statusCode = require('../../../module/response/statusCode');
 const utils = require('../../../module/response/utils');
 
 // 몽고 DB Schema
-const Package = require('../../../schemas/package');
+const Themebox = require('../../../schemas/themebox');
 
 router.get('/', async (req, res) => {
     try {
-        const { package_id } = req.query;
+        const { themebox_id } = req.query;
 
-        if (!package_id) {
+        if (!themebox_id) {
             res.status(200).json(utils.successFalse(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
         } else {
-            var package = await Package.find({
-                _id: package_id,
+            var themebox = await Themebox.find({
+                _id: themebox_id,
             }).populate('products')
 
-            console.log('패키지 : ', package);
-            console.log(package[0].products.length);
+            console.log('테마박스 : ', themebox);
+            console.log(themebox[0].products.length);
             
             var productArr = new Array();
-            for (var i = 0; i < package[0].products.length; i++) {
+            for (var i = 0; i < themebox[0].products.length; i++) {
                 var product = new Object();
-                product.product_id = package[0].products[i]._id;
-                product.main_img = package[0].products[i].main_img;
-                product.name = package[0].products[i].name;
-                product.price = package[0].products[i].price;
+                product.product_id = themebox[0].products[i]._id;
+                product.main_img = themebox[0].products[i].main_img;
+                product.name = themebox[0].products[i].name;
+                product.price = themebox[0].products[i].price;
                 productArr.push(product);
             }
             let data = {
-                package_id: package[0]._id,
-                main_img: package[0].main_img,
-                name: package[0].name,
-                sale_ratio: package[0].sale_ratio,
-                price: package[0].price,
-                saled_price: Math.round(package[0].price * (((100 - package[0].sale_ratio) / 100))*0.01) * 100,
+                package_id: themebox[0]._id,
+                main_img: themebox[0].main_img,
+                name: themebox[0].name,
+                sale_ratio: themebox[0].sale_ratio,
+                price: themebox[0].price,
+                saled_price: Math.round(themebox[0].price * (((100 - themebox[0].sale_ratio) / 100))*0.01) * 100,
                 product: productArr
             }
             res.status(200).json(utils.successTrue(statusCode.OK, responseMessage.READ_SUCCESS, data));
