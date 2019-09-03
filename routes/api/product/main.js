@@ -19,9 +19,6 @@ router.get('/', async (req, res) => {
 
         var themabox = await Themabox.find({}, { main_img: true })
 
-        console.log(special[0]._id);
-        console.log(special[0]);
-        console.log(special[0].main_img);
         let special_data = [];
         let today_data = [];
         let product_data = [];
@@ -56,7 +53,7 @@ router.get('/', async (req, res) => {
             product: product_data,
             themabox: themabox_data
         }
-        console.log(data);
+        //console.log(data);
         res.status(200).json(utils.successTrue(statusCode.OK, responseMessage.READ_SUCCESS, data));
     } catch (err) {
         console.log(err);
