@@ -21,13 +21,11 @@ router.get('/', async (req, res) => {
                 console.log("category")
                 option = {
                     category: { $in: [category] },
-                    is_regular_product: true
                 }
             } else if (typeof search !== 'undefined' && typeof category === 'undefined') {
                 console.log("search")
                 option = {
                     $or: [{ name: { $regex: search } }, { content: { $regex: search } }],
-                    is_regular_product: true
                 }
             } else {
                 res.status(200).json(utils.successFalse(statusCode.BAD_REQUEST, responseMessage.SEARCH_OR_CATEGORY));
