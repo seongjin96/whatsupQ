@@ -48,16 +48,16 @@ get:
               data:
                 type: object
                 example: {
-                  package_count: 42,
-                  packages: [{
-                    "package_id": "ab_1027492",
+                  themabox_count: 42,
+                  themaboxes: [{
+                    "themabox_id": "ab_1027492",
                     "name": "플레이팅 완벽하게 끝내기",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf",
                     "price": 58000,
                     "saled_price": 48900,
                   },
                   {
-                    "package_id": "ab_1027492",
+                    "themabox_id": "ab_1027492",
                     "name": "플레이팅 완벽하게 끝내기",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf",
                     "price": 58000,
