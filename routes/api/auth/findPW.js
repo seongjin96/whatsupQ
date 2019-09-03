@@ -6,6 +6,7 @@ var smtpTransport = require('nodemailer-smtp-transport');
 const utils = require('../../../module/response/utils');
 const resMessage = require('../../../module/response/responseMessage');
 const statusCode = require('../../../module/response/statusCode');
+const cryptoPassword = require('../../../module/cryptoPassword');
 const pool = require('../../../config/dbConfig');
 
 router.put('/', async (req, res) => {
@@ -13,12 +14,12 @@ router.put('/', async (req, res) => {
         var connection = await pool.getConnection();
         const { email, phone } = req.body;
         if (!email || !phone) {
-            res.status(200).json(utils.successFalse(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
+            res.status(200).json(utils.successFalse(statusCode.BAD_REQUEST, resMessage.NULL_VALUE));
         } else {
             let query = "SELECT email FROM users WHERE email = ? AND phone = ?";
             let result = await connection.query(query, [email, phone]);
             if (!result) {
-                res.status(200).json(utils.successFalse(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE)); // 수정 필요
+                res.status(200).json(utils.successFalse(statusCode.BAD_REQUEST, resMessage.NULL_VALUE)); // 수정 필요
             }
             //아이디가 존재할 경우 
             else {
@@ -46,25 +47,36 @@ router.put('/', async (req, res) => {
 
                 var mailOptions = {
                     from: 'whatsubq@gmail.com',
-                    to: 'w8348@naver.com',
+                    to: result[0].email,
                     subject: '임시 비밀번호를 알려드립니다.',
                     text: '임시 비밀번호는 ' + randomPw + '입니다.'
                 };
 
-                transporter.sendMail(mailOptions, (error, info) => {
+                transporter.sendMail(mailOptions, async (error, info) => {
                     if (error) {
                         console.log(error);
                     }
                     else {
                         console.log('Email sent! : ' + info.response);
+                        const salt = await cryptoPassword.salt();
+                        let password = await cryptoPassword.hashedPassword(randomPw, salt);
+
+                        query = 'UPDATE users SET salt = ?, password = ? WHERE email = ?';
+                        console.log(result[0].email);
+                        const result_user = await connection.query(query, [salt, password, (result[0].email)]);
+                        await connection.commit();
+                        res.status(200).json(utils.successTrue(statusCode.CREATED, resMessage.SAVE_SUCCESS));
                     }
                     transporter.close();
                 });
             }
         }
     } catch (err) {
+        connection.rollback();
         console.log(err);
         res.status(200).json(utils.successFalse(statusCode.INTERNAL_SERVER_ERROR, resMessage.INTERNAL_SERVER_ERROR));
+    } finally {
+        connection.release();
     }
 })
 module.exports = router;
