@@ -18,7 +18,6 @@ router.get('/', async (req, res) => {
         } else {
             var products = await Product.find({
                 _id: product_id,
-                is_regular_product: true
             })
 
             let data = {
