@@ -25,53 +25,66 @@ get:
                 type: object
                 example: {
                   speical: [{
+                    "special_id": "baa_100592750",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
                   },
                   {
+                    "special_id": "baa_100592750",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
                   },
                   {
+                    "special_id": "baa_100592750",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
                   },
                   {
+                    "special_id": "baa_100592750",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
                   }
                   ],
                   today: [{
+                    "product_id": "baa_100592750",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
                   },
                   {
+                    "product_id": "baa_100592750",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
                   },
                   {
+                    "product_id": "baa_100592750",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
                   },
                   {
+                    "product_id": "baa_100592750",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
                   },
                   {
+                    "product_id": "baa_100592750",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
                   }
                   ],
                   product: [{
                     "product_id": "baa_100592750",
-                    "name": "삼다수",
-                    "content": "제주삼다수, 500ml, 40개입",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf",
-                    "price": 11700,
-                    "saled_price": 10000,
                   },
                   {
                     "product_id": "baa_100592750",
-                    "name": "삼다수",
-                    "content": "제주삼다수, 500ml, 40개입",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf",
-                    "price": 11700,
-                    "saled_price": 10000,
                   },
-                    ...
+                  {
+                    "product_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf",
+                  },
+                  {
+                    "product_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf",
+                  },
+                  {
+                    "product_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf",
+                  },
                   ],
                   themabox: [{
+                    "themabox_id": "baa_100592750",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
                   }]
                 }
