@@ -31,7 +31,7 @@ module.exports = async () => {
         require('./product');
         require('./package');
         require('./special');
-        require('./themabox');
+        require('./themebox');
     } catch (err) {
         console.log(err);
     }

@@ -5,7 +5,7 @@ const statusCode = require('../../../module/response/statusCode');
 const utils = require('../../../module/response/utils');
 
 // 몽고 DB Schema
-const Themabox = require('../../../schemas/themabox');
+const Themebox = require('../../../schemas/themebox');
 
 // 테마박스 상품 리스트 보여주기
 router.get('/', async (req, res) => {
@@ -16,40 +16,40 @@ router.get('/', async (req, res) => {
         } else {
             // 최신순
             if (flag == 1) {
-                var themabox = await Themabox.find({
+                var themebox = await Themebox.find({
                     category: { $in: [category]},
                 }).
                 sort({ created_at: 'desc' })
 
             // 가격 낮은 순
             } else if (flag == 3) {
-                var themabox = await Themabox.find({
+                var themebox = await Themebox.find({
                     category: { $in: [category]},
                 }).
                 sort({ price: 'asc' })
 
             // 가격 높은 순
             } else if (flag == 4) {
-                var themabox = await Themabox.find({
+                var themebox = await Themebox.find({
                     category: { $in: [category]},
                 }).
                 sort({ price: 'desc' })
             }
 
-            let themabox_data = [];
-            for(let i = 0; i < themabox.length; i++) {
-                themabox_data[i] = {
-                    themabox_id: themabox[i]._id,
-                    name: themabox[i].name,
-                    main_img: themabox[i].main_img,
-                    price: themabox[i].price,
-                    saled_price: Math.round(themabox[i].price * (((100 - themabox[i].sale_ratio) / 100)) * 0.01) * 100
+            let themebox_data = [];
+            for(let i = 0; i < themebox.length; i++) {
+                themebox_data[i] = {
+                    themebox_id: themebox[i]._id,
+                    name: themebox[i].name,
+                    main_img: themebox[i].main_img,
+                    price: themebox[i].price,
+                    saled_price: Math.round(themebox[i].price * (((100 - themebox[i].sale_ratio) / 100)) * 0.01) * 100
                 }
             }
 
             const data = {
-                themabox_count: themabox.length,
-                themaboxes: themabox_data
+                themebox_count: themebox.length,
+                themeboxes: themebox_data
             }
             
             res.status(200).json(utils.successTrue(statusCode.OK, responseMessage.READ_SUCCESS, data));

@@ -4,7 +4,7 @@ get:
   summary: 테마박스 상품 세부 사항 조회
   parameters:
     - in: query
-      name: themabox_id
+      name: themebox_id
       required: true
       schema:
         type: string
@@ -29,7 +29,7 @@ get:
               data:
                 type: object
                 example: {
-                  "themabox_id": "5d230b82888d6787b4a41efb",
+                  "themebox_id": "5d230b82888d6787b4a41efb",
                   "main_img": "akjasdbf",
                   "name": "test",
                   "sale_ratio": 10,
