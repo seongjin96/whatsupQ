@@ -17,28 +17,14 @@ router.get('/', async (req, res) => {
         } else {
             var themebox = await Themebox.find({
                 _id: themebox_id,
-            }).populate('products')
+            })
 
             console.log('테마박스 : ', themebox);
-            console.log(themebox[0].products.length);
-            
-            var productArr = new Array();
-            for (var i = 0; i < themebox[0].products.length; i++) {
-                var product = new Object();
-                product.product_id = themebox[0].products[i]._id;
-                product.main_img = themebox[0].products[i].main_img;
-                product.name = themebox[0].products[i].name;
-                product.price = themebox[0].products[i].price;
-                productArr.push(product);
-            }
+ 
             let data = {
-                package_id: themebox[0]._id,
-                main_img: themebox[0].main_img,
-                name: themebox[0].name,
-                sale_ratio: themebox[0].sale_ratio,
+                themebox_id: themebox[0]._id,
                 price: themebox[0].price,
-                saled_price: Math.round(themebox[0].price * (((100 - themebox[0].sale_ratio) / 100))*0.01) * 100,
-                product: productArr
+                img: themebox[0].img,
             }
             res.status(200).json(utils.successTrue(statusCode.OK, responseMessage.READ_SUCCESS, data));
         }
