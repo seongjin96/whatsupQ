@@ -3,8 +3,9 @@ var router = express.Router();
 
 var Product = require('../../../schemas/product');
 var Package = require('../../../schemas/package');
+var Themebox = require('../../../schemas/themebox');
 
-
+/*
 // 정기 배송 상품인 상품 데이터 넣기
 router.post('/product/regular', async (req, res) => {
     try {
@@ -57,7 +58,14 @@ router.post('/product/regular', async (req, res) => {
         휴지/물티슈	청소	베베숲	시그니쳐 물티슈 캡형 70매 10팩	19900 	10 	베베숲 시그니쳐 물티슈 캡형 70매 10팩	상품정보 베베숲 시그니쳐 물티슈 캡형 70매							
         휴지/물티슈	청소	그린터치	물티슈 캡형 100매 10개	10850 	10 	물티슈 캡형 100매 10개	상품정보 그린터치 물티슈 100매							
         휴지/물티슈		크리넥스 	데코앤소프트 3겹 프리미엄화장지 30m 24롤	18300 	10 	데코앤소프트 3겹 프리미엄화장지 30m 24롤	상품정보 데코앤소프트  3겹 프리미엄 화장지 24롤							
-        휴지/물티슈		크리넥스 	도톰한 3겹 카카오 화장지 27m 12롤	13410 	10 	도톰한 3겹 카카오 화장지 27m 12롤	상품정보 크리넥스 도톰한 카카오프렌즈 3겹 27M 6롤`							
+        휴지/물티슈		크리넥스 	도톰한 3겹 카카오 화장지 27m 12롤	13410 	10 	도톰한 3겹 카카오 화장지 27m 12롤	상품정보 크리넥스 도톰한 카카오프렌즈 3겹 27M 6롤
+        뷰티/미용		이니스프리	세이프 미 릴리프 모이스처 클렌징 폼 150ml	15000 	10 	세이프 미 릴리프 모이스처 클렌징 폼 150ml_메인	세이프 미 릴리프 모이스처 클렌징 폼 150ml_상세정보
+        뷰티/미용		이니스프리	블루베리 리밸런싱 5.5 클렌저 100mLx2	9900 	10 	블루베리 리밸런싱 5.5 클렌저 100mLx2_메인	블루베리 리밸런싱 5.5 클렌저 100mLx2_상세정보
+        뷰티/미용	수면	메디힐	메디힐 마스크팩 EX 10팩	7100 	10 	메디힐 마스크팩 EX 10팩_메인	메디힐 마스크팩 EX 10팩_상세정보
+        뷰티/미용		AHC	ahc선스틱 내추럴 퍼펙션 프레쉬 선스틱14gx2	13900 	10 	ahc선스틱 내추럴 퍼펙션 프레쉬 선스틱14gx2_메인	ahc선스틱 내추럴 퍼펙션 프레쉬 선스틱14gx2_상세정보
+        뷰티/미용		DrG	닥터지 그린 마일드업 선크림 50ml	17900 	10 	닥터지 그린 마일드업 선크림 50ml_메인	닥터지 그린 마일드업 선크림 50ml_상세정보
+        뷰티/미용	수면	Lioele	블랙 헤드 제로 코팩 SET(5매)	4900 	10 	블랙 헤드 제로 코팩 SET(5매)_메인	블랙 헤드 제로 코팩 SET(5매)_상세정보
+        뷰티/미용		도루코	도루코 페이스6 면도기(본체1+교체날4개)	11800 	10 	도루코 페이스6 면도기(본체1+교체날4개)_메인	도루코 페이스6 면도기(본체1+교체날4개)_상세정보`
 
         //var csv is the CSV file with headers
         function csvJSON(csv) {
@@ -110,6 +118,72 @@ router.post('/product/regular', async (req, res) => {
         console.log(err);
         res.status(200).json(utils.successFalse(statusCode.INTERNAL_SERVER_ERROR, responseMessage.INTERNAL_SERVER_ERROR));
     } 
+});
+*/
+// 테마박스 상품인 상품 데이터 넣기
+router.post('/product/themebox', async (req, res) => {
+    try {
+        const csv = `category1	category2	price	img1	img2	img3	img4
+        혼밥	먹는 것	18900	테마박스 혼밥 1-1	테마박스 혼밥 1-2	테마박스 혼밥 1-3	테마박스 혼밥 1-4 장바구니
+        혼밥	먹는 것	30900	테마박스 혼밥 2-1	테마박스 혼밥 2-2	테마박스 혼밥 2-3	테마박스 혼밥 2-4 장바구니
+        혼술	먹는 것	38000	테마박스 혼술 1-1	테마박스 혼술 1-2	테마박스 혼술 1-3	테마박스 혼술 1-4 장바구니
+        혼술	먹는 것	21900	테마박스 혼술 2-1	테마박스 혼술 2-2	테마박스 혼술 2-3	테마박스 혼술 2-4 장바구니
+        혼술	먹는 것	51900	테마박스 혼술 3-1	테마박스 혼술 3-2	테마박스 혼술 3-3	테마박스 혼술 3-4 장바구니
+        매니아	인테리어	10500	테마박스 매니아 1-1	테마박스 매니아 1-2	테마박스 매니아 1-3	테마박스 매니아 1-4 장바구니
+        매니아	인테리어	45000	테마박스 매니아 2-1	테마박스 매니아 2-2	테마박스 매니아 2-3	테마박스 매니아 2-4 장바구니
+        매니아	인테리어	18900	테마박스 매니아 3-1	테마박스 매니아 3-2	테마박스 매니아 3-3	테마박스 매니아 3-4 장바구니
+        문화		48000	테마박스 문화 1-1	테마박스 문화 1-2	테마박스 문화 1-3	테마박스 문화 1-4 장바구니
+        19+	수면	32000	테마박스 19+ 1-1	테마박스 19+ 1-2	테마박스 19+ 1-3	테마박스 19+ 1-4
+        반려동물		49000	테마박스 반려동물 1-1	테마박스 반려동물 1-2	테마박스 반려동물 1-3	테마박스 반려동물 1-4 장바구니
+        반려동물		12000	테마박스 반려동물 2-1	테마박스 반려동물 2-2	테마박스 반려동물 2-3	테마박스 반려동물 2-4 장바구니`
+
+        //var csv is the CSV file with headers
+        function csvJSON(csv) {
+            var lines = csv.split("\n");
+
+            var result = [];
+
+            var headers = lines[0].trim().split("\t");
+            console.log(headers);
+
+            for (var i = 1; i < lines.length; i++) {
+                var obj = {};
+                var currentline = lines[i].trim().split("\t");
+
+                for (var j = 0; j < headers.length; j++) {
+                    obj[headers[j]] = currentline[j];
+                }
+                result.push(obj);
+            }
+
+            //return result; //JavaScript object
+            return result; //JSON
+        }
+
+        const dataset = csvJSON(csv);
+        console.log('데이터셋 : ', dataset);
+        console.log('데이터셋 길이 : ', dataset.length);
+
+        for (let i = 0; i < dataset.length; i++) {
+            let price = Number(dataset[i].price.replace(/(\s*)/g, ""));
+            const themebox = new Themebox({
+                img: ['https://s3.ap-northeast-2.amazonaws.com/sopt.seongjin.com/' + dataset[i].img1.trim().replace(/\"/gi, "").replace(/\s/g, '+') + '.png',
+                'https://s3.ap-northeast-2.amazonaws.com/sopt.seongjin.com/' + dataset[i].img2.trim().replace(/\"/gi, "").replace(/\s/g, '+') + '.png',
+                'https://s3.ap-northeast-2.amazonaws.com/sopt.seongjin.com/' + dataset[i].img3.trim().replace(/\"/gi, "").replace(/\s/g, '+') + '.png',
+                'https://s3.ap-northeast-2.amazonaws.com/sopt.seongjin.com/' + dataset[i].img4.trim().replace(/\"/gi, "").replace(/\s/g, '+') + '.png'],
+                price,
+                category: [dataset[i].category1.replace(/(\s*)/g, ""), dataset[i].category2.replace(/(\s*)/g, "")]
+            })
+            const themebox_save_result = await themebox.save();
+            console.log(i + 1, '번째 데이터 삽입');
+        }
+        console.log('데이터 삽입 완료');
+        res.status(200).json({ "메시지": "데이터 삽입 완료" });
+    }
+    catch (err) {
+        console.log(err);
+        res.status(200).json(utils.successFalse(statusCode.INTERNAL_SERVER_ERROR, responseMessage.INTERNAL_SERVER_ERROR));
+    }
 });
 /*
 // 패키지에 속해있는 상품 데이터 넣기

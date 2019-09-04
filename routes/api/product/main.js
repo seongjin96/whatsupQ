@@ -7,7 +7,7 @@ const utils = require('../../../module/response/utils');
 // 몽고 DB Schema
 const Product = require('../../../schemas/product');
 const Special = require('../../../schemas/special');
-const Themabox = require('../../../schemas/themabox');
+const Themebox = require('../../../schemas/themebox');
 
 router.get('/', async (req, res) => {
     try {
@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 
         var product = await Product.find({}, { main_img: true }).limit(5)
 
-        var themabox = await Themabox.find({}, { main_img: true })
+        var themebox = await Themebox.find({}, { img: true })
 
         let special_data = [];
         let today_data = [];
@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
                 main_img: special[i].main_img,
             }
         }
-        console.log(special_data);
+        //console.log(special_data);
         for (var i = 0; i < today.length; i++) {
             today_data[i] = {
                 product_id: today[i]._id,
@@ -42,16 +42,16 @@ router.get('/', async (req, res) => {
                 main_img: product[i].main_img,
             }
         }
-        let themabox_data = {
-            themabox_id: themabox[0]._id,
-            main_img: themabox[0].main_img
+        let themebox_data = {
+            themebox_id: themebox[0]._id,
+            main_img: themebox[0].img[0]
         }
 
         const data = {
             special: special_data,
             today: today_data,
             product: product_data,
-            themabox: themabox_data
+            themebox: themebox_data
         }
         //console.log(data);
         res.status(200).json(utils.successTrue(statusCode.OK, responseMessage.READ_SUCCESS, data));
