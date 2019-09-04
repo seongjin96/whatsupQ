@@ -29,14 +29,14 @@ paths:
     $ref: './paths/product/main.yaml'
   /product/regular:
     $ref: './paths/product/regular.yaml'
-  /product/themabox:
-    $ref: './paths/product/themabox.yaml'
+  /product/themebox:
+    $ref: './paths/product/themebox.yaml'
   /product/special:
     $ref: './paths/product/special.yaml'
   /product/regular/detail:
     $ref: './paths/product/regular_detail.yaml'
-  /product/package/detail:
-    $ref: './paths/product/package_detail.yaml'
+  /product/themebox/detail:
+    $ref: './paths/product/themebox_detail.yaml'
   /product/custom:
     $ref: './paths/product/custom.yaml'
 
