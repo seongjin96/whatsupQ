@@ -11,7 +11,7 @@ get:
       description: |
         카테고리 이름 
         
-        (ex. 혼술, 19+, 반려동물, 문화, 매니아 )
+        (ex. 혼밥, 혼술, 19, 반려동물, 문화, 매니아 )
         
         (주의. 띄어쓰기 하지 말 것)
         
@@ -23,7 +23,7 @@ get:
       description: |
         1: 최신순 (구현 O)
 
-        2: 인기순 (앱잼 때 구현 X)
+        2: 인기순 (데모데이 때 구현 X)
 
         3: 가격 낮은 순 (구현 O)
 
@@ -51,17 +51,11 @@ get:
                   themebox_count: 42,
                   themeboxes: [{
                     "themebox_id": "ab_1027492",
-                    "name": "플레이팅 완벽하게 끝내기",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf",
-                    "price": 58000,
-                    "saled_price": 48900,
                   },
                   {
                     "themebox_id": "ab_1027492",
-                    "name": "플레이팅 완벽하게 끝내기",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf",
-                    "price": 58000,
-                    "saled_price": 48900,
                   },
                     ...
                   ]

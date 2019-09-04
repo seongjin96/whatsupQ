@@ -40,10 +40,7 @@ router.get('/', async (req, res) => {
             for(let i = 0; i < themebox.length; i++) {
                 themebox_data[i] = {
                     themebox_id: themebox[i]._id,
-                    name: themebox[i].name,
-                    main_img: themebox[i].main_img,
-                    price: themebox[i].price,
-                    saled_price: Math.round(themebox[i].price * (((100 - themebox[i].sale_ratio) / 100)) * 0.01) * 100
+                    main_img: themebox[i].img[0],
                 }
             }
 
