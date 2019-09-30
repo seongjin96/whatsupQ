@@ -30,21 +30,26 @@ router.get('/', async (req, res) => {
             } else {
                 res.status(200).json(utils.successFalse(statusCode.BAD_REQUEST, responseMessage.SEARCH_OR_CATEGORY));
             }
-            // 최신순
+
+                // 인기순 (구현 x)
             if (flag == 1) {
                 var products = await Product.find(option).
-                    sort({ created_at: 'desc' })
-                // console.log(products);
+                    sort({ created_at: 'asc' })
+
+                // 가격 높은 순
+            } else if (flag == 2) {
+                var products = await Product.find(option).
+                    sort({ price: 'desc' })
 
                 // 가격 낮은 순
             } else if (flag == 3) {
                 var products = await Product.find(option).
                     sort({ price: 'asc' })
 
-                // 가격 높은 순
+                // 최신순
             } else if (flag == 4) {
                 var products = await Product.find(option).
-                    sort({ price: 'desc' })
+                    sort({ created_at: 'desc' })
             }
 
             let product_data = [];

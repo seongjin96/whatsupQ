@@ -31,8 +31,6 @@ paths:
     $ref: './paths/product/regular.yaml'
   /product/themebox:
     $ref: './paths/product/themebox.yaml'
-  /product/special:
-    $ref: './paths/product/special.yaml'
   /product/regular/detail:
     $ref: './paths/product/regular_detail.yaml'
   /product/themebox/detail:
