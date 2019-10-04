@@ -29,13 +29,13 @@ get:
       schema: 
         type: integer
       description: |
-        1: 최신순 (구현 O)
+        1: 인기순 (구현 x)
 
-        2: 인기순 (데모데이 때 구현 X)
+        2: 가격 높은 순 (구현 O)
 
         3: 가격 낮은 순 (구현 O)
 
-        4: 가격 높은 순 (구현 O)
+        4: 최신순 (구현 O)
         
   responses:
     '200':
