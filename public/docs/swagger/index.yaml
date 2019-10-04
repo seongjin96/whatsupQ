@@ -46,8 +46,8 @@ paths:
     $ref: './paths/auth/findID.yaml'
   /auth/findPW: 
     $ref: './paths/auth/findPW.yaml'
-  /auth/REsignin: 
-    $ref: './paths/auth/REsignin.yaml'
+  /auth/resignin: 
+    $ref: './paths/auth/resignin.yaml'
 
   /mypage/user:
     $ref: './paths/mypage/user.yaml'
