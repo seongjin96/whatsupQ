@@ -3,6 +3,16 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const themeboxSchema = new Schema({
+    // 테마박스 이름
+    name: {
+        type: [String],
+        required: true
+    },
+    // 테마박스 설명
+    content: {
+        type: [String],
+        required: true
+    },
     // 패키지 대표 이미지
     img: {
         type: [String],
