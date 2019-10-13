@@ -17,29 +17,31 @@ router.get('/', async (req, res) => {
             // 최신순
             if (flag == 1) {
                 var themebox = await Themebox.find({
-                    category: { $in: [category]},
+                    category: { $in: [category] },
                 }).
-                sort({ created_at: 'desc' })
+                    sort({ created_at: 'desc' })
 
-            // 가격 낮은 순
+                // 가격 낮은 순
             } else if (flag == 3) {
                 var themebox = await Themebox.find({
-                    category: { $in: [category]},
+                    category: { $in: [category] },
                 }).
-                sort({ price: 'asc' })
+                    sort({ price: 'asc' })
 
-            // 가격 높은 순
+                // 가격 높은 순
             } else if (flag == 4) {
                 var themebox = await Themebox.find({
-                    category: { $in: [category]},
+                    category: { $in: [category] },
                 }).
-                sort({ price: 'desc' })
+                    sort({ price: 'desc' })
             }
 
             let themebox_data = [];
-            for(let i = 0; i < themebox.length; i++) {
+            for (let i = 0; i < themebox.length; i++) {
                 themebox_data[i] = {
                     themebox_id: themebox[i]._id,
+                    name: themebox[i].name[0],
+                    content: themebox[i].content[0],
                     main_img: themebox[i].img[0],
                 }
             }
@@ -48,7 +50,7 @@ router.get('/', async (req, res) => {
                 themebox_count: themebox.length,
                 themeboxes: themebox_data
             }
-            
+
             res.status(200).json(utils.successTrue(statusCode.OK, responseMessage.READ_SUCCESS, data));
         }
     } catch (err) {

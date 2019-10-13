@@ -51,10 +51,14 @@ get:
                   themebox_count: 42,
                   themeboxes: [{
                     "themebox_id": "ab_1027492",
+                    "name": "집에서 맥주 한잔 어떠세요?",
+                    "content": "혼술에 적합한 안주도 담아봤어요",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf",
                   },
                   {
                     "themebox_id": "ab_1027492",
+                    "name": "오늘도 수고했어",
+                    "content": "오늘도 고생한 당신을 위한 와인과 안주를 준비했어요",
                     "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf",
                   },
                     ...
