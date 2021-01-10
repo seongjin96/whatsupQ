@@ -4,14 +4,14 @@ openapi: 3.0.0
 # API 문서에 대한 정보 (버전, 제목, 설명)
 info:
   version: '1.0.0'
-  title: '준비해BOX'
-  description: 'SOPT 24기 준비해BOX 앱잼'
+  title: '왓섭큐'
+  description: '2030 1인 가구를 위한 맞춤형 이커머스'
   
 # API 서버에 대한 정보
 servers:
   - url: "http://54.180.46.143:3000/api"
-  # - url: "http://localhost:3000/api"
-    description: 준비해BOX API # 제공하는 API에 대한 설명
+  #- url: "http://localhost:3000/api"
+    description: 왓섭큐 API # 제공하는 API에 대한 설명
 
 tags:
   - name: 상품
@@ -25,14 +25,16 @@ tags:
 
 # 각 URI에 대한 정보를 기재
 paths:
+  /product/main:
+    $ref: './paths/product/main.yaml'
   /product/regular:
     $ref: './paths/product/regular.yaml'
-  /product/package:
-    $ref: './paths/product/package.yaml'
+  /product/themebox:
+    $ref: './paths/product/themebox.yaml'
   /product/regular/detail:
     $ref: './paths/product/regular_detail.yaml'
-  /product/package/detail:
-    $ref: './paths/product/package_detail.yaml'
+  /product/themebox/detail:
+    $ref: './paths/product/themebox_detail.yaml'
   /product/custom:
     $ref: './paths/product/custom.yaml'
 
@@ -40,6 +42,12 @@ paths:
     $ref: './paths/auth/signin.yaml'
   /auth/signup: 
     $ref: './paths/auth/signup.yaml'
+  /auth/findID: 
+    $ref: './paths/auth/findID.yaml'
+  /auth/findPW: 
+    $ref: './paths/auth/findPW.yaml'
+  /auth/resignin: 
+    $ref: './paths/auth/resignin.yaml'
 
   /mypage/user:
     $ref: './paths/mypage/user.yaml'

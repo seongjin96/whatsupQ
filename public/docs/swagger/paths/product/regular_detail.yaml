@@ -1,7 +1,7 @@
 get:
   tags:
     - 상품
-  summary: 정기 배송 상품 세부 사항 조회
+  summary: 생필품 세부 사항 조회
   parameters:
     - in: query
       name: product_id

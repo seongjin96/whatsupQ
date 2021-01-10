@@ -30,6 +30,8 @@ module.exports = async () => {
 
         require('./product');
         require('./package');
+        require('./special');
+        require('./themebox');
     } catch (err) {
         console.log(err);
     }

@@ -1,0 +1,48 @@
+put:
+  tags:
+    - 로그인 및 회원가입
+  summary: 비밀번호 찾기 
+  requestBody:
+    require: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+              description: 이메일
+            phone:
+              type: string
+              description: 휴대폰 번호
+          require:
+            - email
+            - phone
+          example:
+            email: 'w3323@naver.com'
+            phone: '01048302250'
+  responses:
+    '200':
+      description: 이메일과 휴대폰 번호가 일치해서 임시 비밀번호 발송 성공
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 200
+              success:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: '이메일로 임시 비밀번호가 발송되었습니다'
+    '400':
+      $ref: '../../components/responses.yaml#400-NULL_VALUE'
+    '400 ':
+      $ref: '../../components/responses.yaml#400-NULL_USER'
+    '400  ':
+      $ref: '../../components/responses.yaml#400-INVALID_PASSWORD'
+    '500  ':
+      $ref: '../../components/responses.yaml#500-INTERNAL_SERVER_ERROR'

@@ -3,8 +3,9 @@ var router = express.Router();
 
 var Product = require('../../../schemas/product');
 var Package = require('../../../schemas/package');
+var Themebox = require('../../../schemas/themebox');
 
-
+/*
 // 정기 배송 상품인 상품 데이터 넣기
 router.post('/product/regular', async (req, res) => {
     try {
@@ -44,27 +45,27 @@ router.post('/product/regular', async (req, res) => {
         욕실용품	청소	데톨 	포밍 핸드워시 애플블라썸 250ml 	6390 	10 	데톨 포밍 핸드워시 애플블라썸	상품정보 데톨 핸드워시 애플 블로썸 250ml							
         욕실용품	수면	순수연구소	1+1 딥 포어 클렌징폼 150ml 2개	23320 	7 	순수연구소 모공맑음	상품정보 모공맑음 딥 포어 클렌징폼 150ml							
         욕실용품	청소	자연봄	좁쌀여드름 천연비누 100g 	10000 	10 	자연봄 좁쌀여드름 오일 천연비누 100g	상품정보 좁쌀여드름 자연봄 천연비누 100g							
-        디퓨저/방향제	옷관리	P&G	페브리즈 섬유탈취제 상쾌한 향 370ml 2개	12000 	10 	페브리즈 섬유탈취제 상쾌한 향 370ml 2개	상품정보 페브리즈 섬유탈취제 상쾌한 향 370ml 2개							
-        디퓨저/방향제	옷관리	디노보 	굿베딩 섬유탈취제 500ml 2개	30800 	7 	굿베딩 섬유탈취제 500ml 2개	상품정보 굿베딩 섬유탈취제 500ml 2개							
-        디퓨저/방향제	인테리어	아르망 	프리저브드 플라워 디퓨저 로즈마리 향 100ml 	24000 	7 	프리저브드 플라워 디퓨저 로즈마리 향 100ml 1개	상품정보 프리저브드 플라워 디퓨저 로즈마리 향 100ml 1개							
-        디퓨저/방향제	인테리어	P&G	부착형 화장실 용 본체 상쾌한 하늘 향 5.5ml 	13500 	10 	부착형 화장실 용 본체 상쾌한 하늘 향 5.5ml 1개	상품정보 부착형 화장실 용 본체 5.5ml							
-        디퓨저/방향제	인테리어	로드로즈	스위트 가든 플라워 디퓨저 레몬라벤더 향 100ml 	19900 	10 	스위트 가든 플라워 디퓨저 레몬라벤더 향 100ml 1개	상품정보 스위트 가든 플라워 디퓨저 레몬라벤더 향 100ml 1개							
-        디퓨저/방향제	수면	아로마랩 	"27허브오일 (세탁오일, 싱크대오일, 욕실오일 용) 5ml "	15000 	10 	27허브오일 세탁오일 싱크대오일 욕실오일용 5ml 1개	상품정보 27허브오일 5ml 1개							
-        디퓨저/방향제	인테리어	로드로즈	라벤더 디퓨저 하루 복숭아 향 100ml 	18900 	10 	라벤더 디퓨저 하루 복숭아 향 100ml 1개	상품정보 라벤더 디퓨저 하루 복숭아 향 100ml 1개							
+        디퓨저/탈취제	옷관리	P&G	페브리즈 섬유탈취제 상쾌한 향 370ml 2개	12000 	10 	페브리즈 섬유탈취제 상쾌한 향 370ml 2개	상품정보 페브리즈 섬유탈취제 상쾌한 향 370ml 2개							
+        디퓨저/탈취제	옷관리	디노보 	굿베딩 섬유탈취제 500ml 2개	30800 	7 	굿베딩 섬유탈취제 500ml 2개	상품정보 굿베딩 섬유탈취제 500ml 2개							
+        디퓨저/탈취제	인테리어	아르망 	프리저브드 플라워 디퓨저 로즈마리 향 100ml 	24000 	7 	프리저브드 플라워 디퓨저 로즈마리 향 100ml 1개	상품정보 프리저브드 플라워 디퓨저 로즈마리 향 100ml 1개							
+        디퓨저/탈취제	인테리어	P&G	부착형 화장실 용 본체 상쾌한 하늘 향 5.5ml 	13500 	10 	부착형 화장실 용 본체 상쾌한 하늘 향 5.5ml 1개	상품정보 부착형 화장실 용 본체 5.5ml							
+        디퓨저/탈취제	인테리어	로드로즈	스위트 가든 플라워 디퓨저 레몬라벤더 향 100ml 	19900 	10 	스위트 가든 플라워 디퓨저 레몬라벤더 향 100ml 1개	상품정보 스위트 가든 플라워 디퓨저 레몬라벤더 향 100ml 1개							
+        디퓨저/탈취제	수면	아로마랩 	"27허브오일 (세탁오일, 싱크대오일, 욕실오일 용) 5ml "	15000 	10 	27허브오일 세탁오일 싱크대오일 욕실오일용 5ml 1개	상품정보 27허브오일 5ml 1개							
+        디퓨저/탈취제	인테리어	로드로즈	라벤더 디퓨저 하루 복숭아 향 100ml 	18900 	10 	라벤더 디퓨저 하루 복숭아 향 100ml 1개	상품정보 라벤더 디퓨저 하루 복숭아 향 100ml 1개							
         휴지/물티슈	청소	크리넥스	디럭스 신수성 미용티슈 250매 6개	21010 	7 	크리넥스 디럭스 신수성 미용티슈 250매 6개	상품정보 크리넥스 디럭스 신수성 미용티슈 250매							
         휴지/물티슈	청소	깨끗한나라	소프티 각티슈 250매 6개	18900 	10 	소프티 각티슈 250매 6개	상품정보 깨끗한나라 소프티 각티슈 250매							
         휴지/물티슈	청소	미엘물티슈 	베이직 물티슈 클래식 100매 20팩	20900 	7 	베이직 물티슈 클래식 100매 20팩	상품정보 미엘 베이직 물티슈 클래식 100매							
         휴지/물티슈	청소	베베숲	시그니쳐 물티슈 캡형 70매 10팩	19900 	10 	베베숲 시그니쳐 물티슈 캡형 70매 10팩	상품정보 베베숲 시그니쳐 물티슈 캡형 70매							
         휴지/물티슈	청소	그린터치	물티슈 캡형 100매 10개	10850 	10 	물티슈 캡형 100매 10개	상품정보 그린터치 물티슈 100매							
         휴지/물티슈		크리넥스 	데코앤소프트 3겹 프리미엄화장지 30m 24롤	18300 	10 	데코앤소프트 3겹 프리미엄화장지 30m 24롤	상품정보 데코앤소프트  3겹 프리미엄 화장지 24롤							
-        휴지/물티슈		크리넥스 	도톰한 3겹 카카오 화장지 27m 12롤	13410 	10 	도톰한 3겹 카카오 화장지 27m 12롤	상품정보 크리넥스 도톰한 카카오프렌즈 3겹 27M 6롤							
-        반려동물용품	청소	댕냥이	[휴대용] 반려동물 세정용 캡형 물티슈 30매 10개	18000 	10 	요요쉬 반려동물 세정용 물티슈 휴대용	상품정보 반려동물 세정용 캡형 물티슈 30매							
-        반려동물용품	청소	etipet	눈귀입청결 강아지세수 물티슈 80매 5개	17620 	10 	눈귀입청결 강아지세수 물티슈	상품정보 눈귀입청결 강아지세수 물티슈 80매							
-        반려동물용품		하림펫푸드 	더리얼 캣 고양이사료 닭고기 키튼 1kg 	20500 	7 	더리얼 캣 밥이보약 고양이사료	상품정보 하림 더리얼 캣 크런치 닭고기 키튼 1Kg							
-        반려동물용품		시리우스 윌	[댕댕이] 프리 바이오틱스 연어 1kg 	15900 	10 	시리우스 윌 프리바이오틱스 연어	상품정보 시리우스 윌 프리바이오틱스 연어 1kg							
-        반려동물용품		감자와 호빵이	비바텍 럭스펫 반려동물 칫솔 세트 퍼피 1개 스몰 1개 	25500 	7 	비바텍 럭스펫 3kg이하 반려동물 칫솔	상품정보 비바텍 럭스펫 반려동물 칫솔 세트 							
-        반려동물용품		Virbac(버박)	C.E.T 강아지 고양이 치약 닭고기맛 70g 	8000 	10 	버박 C.E.T 강아지 고양이 치약 닭고기맛	상품정보 CET 강아지 고양이 치약 닭고기맛							
-        반려동물용품	청소	펫 에이드	티슈 내장형 배변봉투 퀵백 30매 3개	9310 	10 	원매너 티슈내장형 배변봉투	상품정보 원매너 티슈내장형 배변봉투 퀵백 30매`
+        휴지/물티슈		크리넥스 	도톰한 3겹 카카오 화장지 27m 12롤	13410 	10 	도톰한 3겹 카카오 화장지 27m 12롤	상품정보 크리넥스 도톰한 카카오프렌즈 3겹 27M 6롤
+        뷰티/미용		이니스프리	세이프 미 릴리프 모이스처 클렌징 폼 150ml	15000 	10 	세이프 미 릴리프 모이스처 클렌징 폼 150ml_메인	세이프 미 릴리프 모이스처 클렌징 폼 150ml_상세정보
+        뷰티/미용		이니스프리	블루베리 리밸런싱 5.5 클렌저 100mLx2	9900 	10 	블루베리 리밸런싱 5.5 클렌저 100mLx2_메인	블루베리 리밸런싱 5.5 클렌저 100mLx2_상세정보
+        뷰티/미용	수면	메디힐	메디힐 마스크팩 EX 10팩	7100 	10 	메디힐 마스크팩 EX 10팩_메인	메디힐 마스크팩 EX 10팩_상세정보
+        뷰티/미용		AHC	ahc선스틱 내추럴 퍼펙션 프레쉬 선스틱14gx2	13900 	10 	ahc선스틱 내추럴 퍼펙션 프레쉬 선스틱14gx2_메인	ahc선스틱 내추럴 퍼펙션 프레쉬 선스틱14gx2_상세정보
+        뷰티/미용		DrG	닥터지 그린 마일드업 선크림 50ml	17900 	10 	닥터지 그린 마일드업 선크림 50ml_메인	닥터지 그린 마일드업 선크림 50ml_상세정보
+        뷰티/미용	수면	Lioele	블랙 헤드 제로 코팩 SET(5매)	4900 	10 	블랙 헤드 제로 코팩 SET(5매)_메인	블랙 헤드 제로 코팩 SET(5매)_상세정보
+        뷰티/미용		도루코	도루코 페이스6 면도기(본체1+교체날4개)	11800 	10 	도루코 페이스6 면도기(본체1+교체날4개)_메인	도루코 페이스6 면도기(본체1+교체날4개)_상세정보`
 
         //var csv is the CSV file with headers
         function csvJSON(csv) {
@@ -105,8 +106,6 @@ router.post('/product/regular', async (req, res) => {
                 price,
                 sale_ratio,
                 saled_price: Math.round((price * (100 - sale_ratio) / 100) * 0.01) * 100,
-                is_regular_product: true,
-                is_package_product: false,
                 category: [dataset[i].category1.replace(/(\s*)/g, ""), dataset[i].category2.replace(/(\s*)/g, "")]
             })
             const product_save_result = await product.save();
@@ -120,7 +119,73 @@ router.post('/product/regular', async (req, res) => {
         res.status(200).json(utils.successFalse(statusCode.INTERNAL_SERVER_ERROR, responseMessage.INTERNAL_SERVER_ERROR));
     } 
 });
+*/
+// 테마박스 상품인 상품 데이터 넣기
+router.post('/product/themebox', async (req, res) => {
+    try {
+        const csv = `category1	category2	price	img1	img2	img3	img4
+        혼밥	먹는 것	18900	테마박스 혼밥 1-1	테마박스 혼밥 1-2	테마박스 혼밥 1-3	테마박스 혼밥 1-4 장바구니
+        혼밥	먹는 것	30900	테마박스 혼밥 2-1	테마박스 혼밥 2-2	테마박스 혼밥 2-3	테마박스 혼밥 2-4 장바구니
+        혼술	먹는 것	38000	테마박스 혼술 1-1	테마박스 혼술 1-2	테마박스 혼술 1-3	테마박스 혼술 1-4 장바구니
+        혼술	먹는 것	21900	테마박스 혼술 2-1	테마박스 혼술 2-2	테마박스 혼술 2-3	테마박스 혼술 2-4 장바구니
+        혼술	먹는 것	51900	테마박스 혼술 3-1	테마박스 혼술 3-2	테마박스 혼술 3-3	테마박스 혼술 3-4 장바구니
+        매니아	인테리어	10500	테마박스 매니아 1-1	테마박스 매니아 1-2	테마박스 매니아 1-3	테마박스 매니아 1-4 장바구니
+        매니아	인테리어	45000	테마박스 매니아 2-1	테마박스 매니아 2-2	테마박스 매니아 2-3	테마박스 매니아 2-4 장바구니
+        매니아	인테리어	18900	테마박스 매니아 3-1	테마박스 매니아 3-2	테마박스 매니아 3-3	테마박스 매니아 3-4 장바구니
+        문화		48000	테마박스 문화 1-1	테마박스 문화 1-2	테마박스 문화 1-3	테마박스 문화 1-4 장바구니
+        19+	수면	32000	테마박스 19+ 1-1	테마박스 19+ 1-2	테마박스 19+ 1-3	테마박스 19+ 1-4
+        반려동물		49000	테마박스 반려동물 1-1	테마박스 반려동물 1-2	테마박스 반려동물 1-3	테마박스 반려동물 1-4 장바구니
+        반려동물		12000	테마박스 반려동물 2-1	테마박스 반려동물 2-2	테마박스 반려동물 2-3	테마박스 반려동물 2-4 장바구니`
 
+        //var csv is the CSV file with headers
+        function csvJSON(csv) {
+            var lines = csv.split("\n");
+
+            var result = [];
+
+            var headers = lines[0].trim().split("\t");
+            console.log(headers);
+
+            for (var i = 1; i < lines.length; i++) {
+                var obj = {};
+                var currentline = lines[i].trim().split("\t");
+
+                for (var j = 0; j < headers.length; j++) {
+                    obj[headers[j]] = currentline[j];
+                }
+                result.push(obj);
+            }
+
+            //return result; //JavaScript object
+            return result; //JSON
+        }
+
+        const dataset = csvJSON(csv);
+        console.log('데이터셋 : ', dataset);
+        console.log('데이터셋 길이 : ', dataset.length);
+
+        for (let i = 0; i < dataset.length; i++) {
+            let price = Number(dataset[i].price.replace(/(\s*)/g, ""));
+            const themebox = new Themebox({
+                img: ['https://s3.ap-northeast-2.amazonaws.com/sopt.seongjin.com/' + dataset[i].img1.trim().replace(/\"/gi, "").replace(/\s/g, '+') + '.png',
+                'https://s3.ap-northeast-2.amazonaws.com/sopt.seongjin.com/' + dataset[i].img2.trim().replace(/\"/gi, "").replace(/\s/g, '+') + '.png',
+                'https://s3.ap-northeast-2.amazonaws.com/sopt.seongjin.com/' + dataset[i].img3.trim().replace(/\"/gi, "").replace(/\s/g, '+') + '.png',
+                'https://s3.ap-northeast-2.amazonaws.com/sopt.seongjin.com/' + dataset[i].img4.trim().replace(/\"/gi, "").replace(/\s/g, '+') + '.png'],
+                price,
+                category: [dataset[i].category1.replace(/(\s*)/g, ""), dataset[i].category2.replace(/(\s*)/g, "")]
+            })
+            const themebox_save_result = await themebox.save();
+            console.log(i + 1, '번째 데이터 삽입');
+        }
+        console.log('데이터 삽입 완료');
+        res.status(200).json({ "메시지": "데이터 삽입 완료" });
+    }
+    catch (err) {
+        console.log(err);
+        res.status(200).json(utils.successFalse(statusCode.INTERNAL_SERVER_ERROR, responseMessage.INTERNAL_SERVER_ERROR));
+    }
+});
+/*
 // 패키지에 속해있는 상품 데이터 넣기
 router.post('/product/package', async (req, res) => {
     try {
@@ -393,7 +458,7 @@ router.post('/package', async (req, res) => {
         console.log(err);
         res.status(200).json(utils.successFalse(statusCode.INTERNAL_SERVER_ERROR, responseMessage.INTERNAL_SERVER_ERROR));
     } 
-});
+});*/
 
 
 module.exports = router;

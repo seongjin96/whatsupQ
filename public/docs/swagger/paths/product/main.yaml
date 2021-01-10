@@ -1,0 +1,96 @@
+get:
+  tags:
+    - 상품
+  summary: 메인 화면(모두의 선택)
+  parameters:
+
+  responses:
+    '200':
+      description: 상품 데이터 조회 성공
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 200
+              success:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: 데이터 조회 성공
+              data:
+                type: object
+                example: {
+                  speical: [{
+                    "special_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
+                  },
+                  {
+                    "special_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
+                  },
+                  {
+                    "special_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
+                  },
+                  {
+                    "special_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
+                  }
+                  ],
+                  today: [{
+                    "product_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
+                  },
+                  {
+                    "product_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
+                  },
+                  {
+                    "product_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
+                  },
+                  {
+                    "product_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
+                  },
+                  {
+                    "product_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
+                  }
+                  ],
+                  product: [{
+                    "product_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf",
+                  },
+                  {
+                    "product_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf",
+                  },
+                  {
+                    "product_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf",
+                  },
+                  {
+                    "product_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf",
+                  },
+                  {
+                    "product_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf",
+                  },
+                  ],
+                  themabox: [{
+                    "themabox_id": "baa_100592750",
+                    "main_img": "https://alasdlfknasfnlkafnasmdf.alzsdkfnlasndf"
+                  }]
+                }
+    '400':
+      $ref: '../../components/responses.yaml#400-NULL_VALUE'
+    '400 ':
+      $ref: '../../components/responses.yaml#400-SEARCH_OR_CATEGORY'
+    '500 ':
+      $ref: '../../components/responses.yaml#500-INTERNAL_SERVER_ERROR'
